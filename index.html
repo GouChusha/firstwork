@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+    <style>
+       
+      
+    </style>
+</head>
+<body>
+    <script src="./vue.js"></script>
+    
+    <div class="w" id="app">
+        
+        <div class="top">
+            <h2>
+                个人介绍
+                <div>
+                    <img class="top" src="./11.jpg">
+                    <img  class="bottom" src="./1.jpg">
+                </div>
+            </h2>
+        </div>
+        <div class="left">
+          <cpn :message="info"></cpn>
+        </div>
+        <div class="right">
+           <a href="javascript:;" v-for="item in info"> {{item.word}}</a>
+        </div>
+        
+    </div>
+    <button>pick me！！！！！</button>
+    <div class="scroll">
+        <marquee direction="right" behavior="alternate" scrolldelay="200" onmouseover="stop()" onmouseout="start()">
+            <table width="2400px" cellspacing="20"  cellpadding="0">
+              <tr>
+                <td class="scroll-td"><img src="./88.jpg"/></td>
+                <td class="scroll-td"><img src="./44.jpg"/></td>
+                <td class="scroll-td"><img src="./77.jpg"/></td>
+                <td class="scroll-td"><img src="./11.jpg"/></td>
+                <td class="scroll-td"><img src="./66.jpg"/></td>
+                <td class="scroll-td"><img src="./88.jpg"/></td>
+                <td class="scroll-td"><img src="./77.jpg"/></td>
+                <td class="scroll-td"><img src="./55.jpg"/></td>
+              </tr>
+            </table>
+        </marquee>
+    </div>
+    
+
+    <template id="t">
+        <ul>
+            <li v-for="(items,index) in message">
+                <a href="javascript:;">{{items.title}}</a>
+            </li>
+        </ul>
+    </template>
+    <script>
+        let btn=document.querySelector('button');
+        let scroll=document.querySelector('.scroll');
+        btn.addEventListener('click',function(){
+            scroll.style.display="block";
+        })
+        const cpn={
+            template:'#t',
+            props:{
+                message:{
+                    type:Array
+                },
+
+                
+            }
+        }
+
+        let app=new Vue({
+            el:'#app',
+            data:{
+                info:[
+                    {
+                        title:'姓名',
+                        word:'苟褚莎'
+                    },
+                    {
+                        title:'年龄',
+                        word:'永远十八！！！'
+                    },
+                    {
+                        title:'班级',
+                        word:'计科203班'
+                    },
+                    {
+                        title:'学号',
+                        word:'20101080323'
+                    },
+                    {
+                        title:'照片',
+                        word:'无'
+                    },
+                    {
+                        title:'兴趣爱好',
+                        word:'吃饭睡觉，看帅哥，打游戏'
+                    }
+                ]
+            },
+            components:{
+                cpn
+            }
+        })
+       
+       
+    </script>
+</body>
+</html>
